@@ -14,14 +14,14 @@ exports.validate = async (req, res) => {
 
 
         if (!isValid || !isAlphaNumericValid || !isblackListedValid || !isquotationValid) {
-            return res.status(400).json({
+            return res.status(200).json({
                 reference: req.body.vehicule.registerNumber,
                 scam: true,
                 rules: errors.concat(alphaNumericErrors).concat(blackListedErrors).concat(quotationRateErrors)
             });
         }
 
-        return res.status(400).json({
+        return res.status(200).json({
             reference: req.body.vehicule.registerNumber,
             scam: false,
             rules: []
