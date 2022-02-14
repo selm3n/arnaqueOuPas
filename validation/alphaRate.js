@@ -3,7 +3,7 @@ const isEmpty = require('./is-empty');
 module.exports = function validateAlphaRate(data) {
     let alphaNumericErrors = [];
     const alphanumRegex = process.env.ALPHANUMREGEX ? new RegExp(process.env.ALPHANUMREGEX) : /^[a-zA-Z0-9 èàùìòÈÀÒÙÌéáúíóÉÁÚÍÓëäüïöËÄÜÏÖêâûîôÊÂÛÎÔç'-]*$/ ;
-    const numRegexx = process.env.NUMREGEX ? new RegExp(process.env.NUMREGEX) : /^[0-9'-]*$/ ;
+    const numRegex = process.env.NUMREGEX ? new RegExp(process.env.NUMREGEX) : /^[0-9'-]*$/ ;
     chars = data.split('@')[0].split('');
     alphanums = 0;
     nums = 0;
@@ -14,7 +14,7 @@ module.exports = function validateAlphaRate(data) {
             alphanums++;
         }
         //count the num caracters
-        if (numRegexx.test(chars[i])) {
+        if (numRegex.test(chars[i])) {
             nums++;
         }
     }
@@ -31,7 +31,5 @@ module.exports = function validateAlphaRate(data) {
         alphaNumericErrors,
         isAlphaNumericValid: isEmpty(alphaNumericErrors)
     };
-
-
 
 }
