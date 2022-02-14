@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const arnaques = require("./routes/api/arnaques");
+const arnaques = require("./routes/api/arnaque");
 
+require('dotenv').config();
 
 const app = express();
 

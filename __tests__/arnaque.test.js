@@ -2,9 +2,7 @@ const app = require("../server");
 const supertest = require("supertest");
 
 describe("arnaque api", () => {
-    
-
-    test("POST /api/arnaques", async () => {
+    test("POST /api/arnaque correct listing", async () => {
         const vehicule = {
             contacts: {
                 firstName: "Christophe",
@@ -18,7 +16,8 @@ describe("arnaque api", () => {
             }
         };
 
-        await supertest(app).post("/api/arnaques").send(vehicule)
+        await supertest(app).post("/api/arnaque")
+            .send(vehicule)
             .expect(200)
             .then((response) => {
                 expect(typeof response.body === "object").toBeTruthy();
@@ -26,7 +25,7 @@ describe("arnaque api", () => {
             });
     });
 
-    test("POST /api/arnaques bad price", async () => {
+    test("POST /api/arnaque bad price", async () => {
         const vehicule = {
             contacts: {
                 firstName: "Christophe",
@@ -40,7 +39,8 @@ describe("arnaque api", () => {
             }
         };
 
-        await supertest(app).post("/api/arnaques").send(vehicule)
+        await supertest(app).post("/api/arnaque")
+            .send(vehicule)
             .expect(200)
             .then((response) => {
                 expect(typeof response.body === "object").toBeTruthy();
@@ -49,7 +49,7 @@ describe("arnaque api", () => {
             });
     });
 
-    test("POST /api/arnaques bad immatriculation", async () => {
+    test("POST /api/arnaque bad immatriculation", async () => {
         const vehicule = {
             contacts: {
                 firstName: "Christophe",
@@ -63,7 +63,8 @@ describe("arnaque api", () => {
             }
         };
 
-        await supertest(app).post("/api/arnaques").send(vehicule)
+        await supertest(app).post("/api/arnaque")
+            .send(vehicule)
             .expect(200)
             .then((response) => {
                 expect(typeof response.body === "object").toBeTruthy();
@@ -72,7 +73,7 @@ describe("arnaque api", () => {
             });
     });
 
-    test("POST /api/arnaques bad firstname and lastName", async () => {
+    test("POST /api/arnaque bad firstname and lastName", async () => {
         const vehicule = {
             contacts: {
                 firstName: "C",
@@ -86,7 +87,8 @@ describe("arnaque api", () => {
             }
         };
 
-        await supertest(app).post("/api/arnaques").send(vehicule)
+        await supertest(app).post("/api/arnaque")
+            .send(vehicule)
             .expect(200)
             .then((response) => {
                 expect(typeof response.body === "object").toBeTruthy();
@@ -96,11 +98,11 @@ describe("arnaque api", () => {
             });
     });
 
-    test("POST /api/arnaques bad alpha rate", async () => {
+    test("POST /api/arnaque bad alpha rate", async () => {
         const vehicule = {
             contacts: {
-                firstName: "C",
-                lastName: "D",
+                firstName: "Ccccc",
+                lastName: "Dddddd",
                 email: "r*******@yopmail.fr"
 
             },
@@ -110,7 +112,8 @@ describe("arnaque api", () => {
             }
         };
 
-        await supertest(app).post("/api/arnaques").send(vehicule)
+        await supertest(app).post("/api/arnaque")
+            .send(vehicule)
             .expect(200)
             .then((response) => {
                 expect(typeof response.body === "object").toBeTruthy();
@@ -119,7 +122,7 @@ describe("arnaque api", () => {
             });
     });
 
-    test("POST /api/arnaques bad number rate", async () => {
+    test("POST /api/arnaque bad number rate", async () => {
         const vehicule = {
             contacts: {
                 firstName: "C",
@@ -133,7 +136,8 @@ describe("arnaque api", () => {
             }
         };
 
-        await supertest(app).post("/api/arnaques").send(vehicule)
+        await supertest(app).post("/api/arnaque")
+            .send(vehicule)
             .expect(200)
             .then((response) => {
                 expect(typeof response.body === "object").toBeTruthy();

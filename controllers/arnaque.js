@@ -1,9 +1,7 @@
 const validateLengthInput = require('../validation/length');
 const validateAlphaRate = require('../validation/alphaRate');
 const validateBlackListed = require('../validation/blackListed');
-
 const validateQuotationRate = require('../validation/quotationRate');
-
 
 exports.validate = async (req, res) => {
     try {
@@ -12,7 +10,6 @@ exports.validate = async (req, res) => {
         const { blackListedErrors, isblackListedValid } = await validateBlackListed(req.body.vehicule?.registerNumber ? req.body.vehicule.registerNumber : null)
         const { quotationRateErrors, isquotationValid } = await validateQuotationRate(req.body)
 
-
         if (!isValid || !isAlphaNumericValid || !isblackListedValid || !isquotationValid) {
             return res.status(200).json({
                 reference: req.body.vehicule.registerNumber,
@@ -20,13 +17,11 @@ exports.validate = async (req, res) => {
                 rules: errors.concat(alphaNumericErrors).concat(blackListedErrors).concat(quotationRateErrors)
             });
         }
-
         return res.status(200).json({
             reference: req.body.vehicule.registerNumber,
             scam: false,
             rules: []
         });
-
     } catch (err) {
         throw new Error(err.message);
     }
